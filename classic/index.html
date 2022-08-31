@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8"> 
+        <meta name="description" content="MySecret app">
+        <meta name="robots" content="index,follow">
+        <title>MySecret</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./style.css">
+        <link rel="icon" href="./favicon.ico">
+        <script src="./index.js" defer></script>
+    </head>
+    <body>
+        <header>
+            <h3>MySecret</h3>
+            <ul>
+                <li><a href="./">Home</a></li>
+                <li>|</li>
+                <li><a href="./about/">About</a></li>
+            </ul>
+        </header>
+
+        <main>
+            <div class="main-content">
+                <h3 class="home-text">Classic Cryptosistems</h3>
+                <div class="row">
+                    <div class="left-col">
+                        <p>
+                            Cipher and decipher text with simple but powerful algorithms. Do some attacks to try to get keys from text.
+                        </p>
+                        <form action="#">
+                            <p>Which algorithm do you want to use?</p>
+                            <select name="cipher" id="cipher-selector">
+                                <option value="shift">Shift Cipher</option>
+                                <option value="substitution">Substitution Cipher</option>
+                                <option value="affine">Affine Cipher</option>
+                                <option value="vigenere">Vigenere Cipher</option>
+                                <option value="permutation">Permutation Cipher</option>
+                                <option value="hill">Hill Cipher</option>
+                            </select>
+                            <p>Enter the key:</p>
+                            <div class="row">
+                                <input type="text">
+                                <button type="button" class="random-key-button">Generate random key</button>
+                            </div>
+                            
+                        </form>
+                    </div>
+                    <div class="right-col">
+                        <h3>Classic cryptosistems</h3>
+                        <ul>
+                            <li>Shift Cipher</li>
+                            <li>Substitution Cipher</li>
+                            <li>Affine Cipher</li>
+                            <li>Vigenere Cipher</li>
+                            <li>Permutation Cipher</li>
+                            <li>Hill Cipher</li>
+                        </ul>
+                        <a href="../public"><h3>Public key cryptosistems</h3></a>
+                        <ul>
+                            <li><a href="../public/#7">RSA</a></li>
+                            <li><a href="../public/#8">ElGamal</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                    
+                </div>
+            </div>
+            
+        </main>
+    </body>
+</html>
