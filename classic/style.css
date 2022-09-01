@@ -45,7 +45,7 @@ header ul {
     right: 20px;
 }
 
-header h3 {
+header .name {
     position: absolute;
     left: 20px;
 }
@@ -129,25 +129,53 @@ main .main-content .row .right-col a:hover {
     text-decoration: underline;
 }
 
+/* estilos del formulario */
+
 main .main-content .row .left-col form {
     padding-top: 30px;
 }
 
-main .main-content .row .left-col form #cipher-selector {
+main .main-content .row .left-col form .cipher-selector {
     margin-top: 15px;
     margin-bottom: 15px;
     height: 30px;
     width: 100%;
 }
 
-main .main-content .row .left-col form .row {
-    padding-top: 10px;
-
+main .main-content .row .left-col form .key-row {
     display: grid;
     grid-template-columns: 1fr 100px;
 }
-main .main-content .row .left-col form .row input {
+
+main .main-content .row .left-col form .key-row input {
     margin-right: 10px;
+    padding-left: 6px;
+    outline: 0;
+    box-shadow: 0 4px 6px -5px hsl(0, 0%, 40%), inset 0px 4px 6px -5px black;
+}
+
+main .main-content .row .left-col form p {
+    padding-top: 10px;
+}
+
+main .main-content .row .left-col form .input-text {
+    width: 100%;
+    resize: vertical;
+
+    padding: 5px 5px;
+    outline: 0;
+    box-shadow: 0 4px 6px -5px hsl(0, 0%, 40%), inset 0px 4px 6px -5px black;
+
+}
+
+main .main-content .row .left-col form .buttons-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+main .main-content .row .left-col form .buttons-row button {
+    margin-top: 20px;
+    height: 30px;
 }
 
 /* media queries */

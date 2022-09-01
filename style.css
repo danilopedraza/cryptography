@@ -27,7 +27,6 @@ header {
     height: 50px;
     background-color: #282a35;
     z-index: 2;
-    border-bottom: 1px solid black;
 
     display: flex;
     align-items: center;
@@ -45,7 +44,7 @@ header ul {
     right: 20px;
 }
 
-header h3 {
+header .name {
     position: absolute;
     left: 20px;
 }

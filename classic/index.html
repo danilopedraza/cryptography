@@ -12,10 +12,12 @@
     </head>
     <body>
         <header>
-            <h3>MySecret</h3>
+            <a href="../" class="name"><h3>MySecret</h3></a>
             <ul>
+                <!--
                 <li><a href="./">Home</a></li>
                 <li>|</li>
+                -->
                 <li><a href="./about/">About</a></li>
             </ul>
         </header>
@@ -30,7 +32,7 @@
                         </p>
                         <form action="#">
                             <p>Which algorithm do you want to use?</p>
-                            <select name="cipher" id="cipher-selector">
+                            <select name="cipher" class="cipher-selector">
                                 <option value="shift">Shift Cipher</option>
                                 <option value="substitution">Substitution Cipher</option>
                                 <option value="affine">Affine Cipher</option>
@@ -39,9 +41,18 @@
                                 <option value="hill">Hill Cipher</option>
                             </select>
                             <p>Enter the key:</p>
-                            <div class="row">
-                                <input type="text">
+                            <div class="key-row">
+                                <input type="text" name="key" class="input-key">
                                 <button type="button" class="random-key-button">Generate random key</button>
+                            </div>
+                            <p>Enter the cleartext:</p>
+                            <textarea class="input-text" name="cleartext" cols="40" rows="5"></textarea>
+                            <p>Enter the ciphertext:</p>
+                            <textarea class="input-text" name="ciphertext" cols="40" rows="5"></textarea>
+
+                            <div class="buttons-row">
+                                <button type="button" name="start-cipher">Cipher</button>
+                                <button type="button" name="start-decipher">Decipher</button>
                             </div>
                             
                         </form>
