@@ -14,11 +14,7 @@
         <header>
             <a href="../" class="name"><h3>MySecret</h3></a>
             <ul>
-                <!--
-                <li><a href="./">Home</a></li>
-                <li>|</li>
-                -->
-                <li><a href="./about/">About</a></li>
+                <li><a href="../about/">About</a></li>
             </ul>
         </header>
 
@@ -28,7 +24,8 @@
                 <div class="row">
                     <div class="left-col">
                         <p>
-                            Cipher and decipher text with simple but powerful algorithms. Do some attacks to try and get keys from text.
+                            Cipher and decipher text with simple but powerful algorithms. 
+                            Do some attacks to try and get keys from text.
                         </p>
                         <form id='form'>
                             <p>Which algorithm do you want to use?</p>
@@ -42,16 +39,20 @@
                             </select>
                             <p>Enter the key:</p>
                             <div class="key-row">
-                                <input type="text" name="key" class="input-key">
-                                <button type="button" class="random-key-button">Generate random key</button>
+                                <textarea class="input-key" name="key" rows="1"></textarea>
+                                <button type="button" class="random-key-button">
+                                    Generate random key
+                                </button>
                             </div>
                             <p id="key-input-guide">
                                 ⓘ A key is a whole number from 1 to 26.
                             </p>
-                            <p>Enter the cleartext:</p>
-                            <textarea class="input-text" name="cleartext" cols="40" rows="5"></textarea>
-                            <p>Enter the ciphertext:</p>
-                            <textarea class="input-text" name="ciphertext" cols="40" rows="5"></textarea>
+                            <p id="above-plainthing">Enter the plaintext:</p>
+                            <textarea class="input-text" id="input-plaintext" name="plaintext" rows="5"></textarea>
+                            <input type="file" class="input-image" id="input-clearimage" name="clearimage">
+                            <p id="above-cipherthing">Enter the ciphertext:</p>
+                            <textarea class="input-text" id="input-ciphertext" name="ciphertext" rows="5"></textarea>
+                            <input type="file" class="input-image" id="input-cipherimage" name="cipherimage">
 
                             <div class="buttons-row">
                                 <button type="button" name="start-cipher">Cipher</button>

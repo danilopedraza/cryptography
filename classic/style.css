@@ -147,10 +147,11 @@ main .main-content .row .left-col form .key-row {
     grid-template-columns: 1fr 100px;
 }
 
-main .main-content .row .left-col form .key-row input {
+main .main-content .row .left-col form .key-row textarea {
     margin-right: 10px;
-    padding-left: 6px;
+    padding: 7px 5px;
     outline: 0;
+    resize: none;
     box-shadow: 0 4px 6px -5px hsl(0, 0%, 40%), inset 0px 4px 6px -5px black;
 }
 
@@ -181,6 +182,11 @@ main .main-content .row .left-col form .buttons-row button {
 main .main-content .row .left-col form #key-input-guide {
     padding: 10px 0px;
     font-size: 1.35rem;
+}
+
+main .main-content .row .left-col form .input-image {
+    display: none;
+    padding: 10px 0px;
 }
 
 /* media queries */
