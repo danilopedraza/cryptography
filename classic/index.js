@@ -81,6 +81,7 @@ function randint(a, b) {
 
 const randomKeyButton = document.querySelector('.random-key-button')
 randomKeyButton.addEventListener('click', (event) => {
+    var availableNums, res, phiOf26, i, keyLength
     switch (cipherSelector.value) {
         case 'shift':
             keyInput.value = randint(0,26).toString()
@@ -121,7 +122,7 @@ randomKeyButton.addEventListener('click', (event) => {
 })
 
 // verificación de las claves
-function verifyKey(key, errors, warnings) {
+function verifyKey() {
     var key = null
     var errors = []
     var warnings = []
