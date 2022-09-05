@@ -6,9 +6,12 @@
         <meta name="robots" content="index,follow">
         <title>MySecret</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../style.css">
         <link rel="stylesheet" href="./style.css">
         <link rel="icon" href="../favicon.ico">
-        <script src="./index.js" defer></script>
+        
+        <script src="./index.js" type="module" defer></script>
+        <script src="./cryptosystems.js" type="module" defer></script>
     </head>
     <body>
         <header>
@@ -45,7 +48,7 @@
                                 </button>
                             </div>
                             <p id="key-input-guide">
-                                ⓘ A key is a whole number from 1 to 26.
+                                ⓘ A key is a whole number from 0 to 25.
                             </p>
                             <p id="above-plainthing">Enter the plaintext:</p>
                             <textarea class="input-text" id="input-plaintext" name="plaintext" rows="5"></textarea>
@@ -55,9 +58,10 @@
                             <input type="file" class="input-image" id="input-cipherimage" name="cipherimage">
 
                             <div class="buttons-row">
-                                <button type="button" name="start-cipher">Cipher</button>
-                                <button type="button" name="start-decipher">Decipher</button>
+                                <button type="button" id="start-cipher">Cipher</button>
+                                <button type="button" id="start-decipher">Decipher</button>
                             </div>
+                            <p id="errors"></p>
                             
                         </form>
                     </div>
