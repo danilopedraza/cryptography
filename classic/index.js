@@ -268,14 +268,13 @@ const decipherButton = document.getElementById('start-decipher')
 
 decipherButton.addEventListener('click' ,(event) => {
     if (cipherSelector.value != 'hill') {
-        var inputStr = cipherText.value.replace(/[^a-zA-Z]/g, '').toUpperCase()
-        var outputStr = ''
         var key = verifyKey()
         if (key == null) {
             // NOOP: verifyKey ya hizo lo necesario
         }
         else {
-            inputStr = plainText.value.replace(/[^a-zA-Z]/g, '').toUpperCase()
+            var inputStr = cipherText.value.replace(/[^a-zA-Z]/g, '').toUpperCase()
+            var outputStr = ''
             switch (cipherSelector.value) {
                 case 'shift':
                     outputStr = cryptosystems.decodeShift(key, inputStr)
