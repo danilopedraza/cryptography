@@ -148,67 +148,75 @@ function verifyKey() {
             break
         case 'substitution':
             key = keyInput.value
-            key = key.split(/[( )*,( )*]/)
-            if (key.some(str => !(/^([1-9]|1[0-9]|2[0-6])$/.test(str)))) {
-                errors.push('There are non-whole numbers or numbers out of range (from 1 to 26) in the key.')
-            }
-            else {
+
+            if (/^(([1-9]|1[0-9]|2[0-6])\s*,\s*)*([1-9]|1[0-9]|2[0-6])$/.test(key)) {
+                key = key.replace(/\s/g, '')
+                key = key.split(/,/)
+                console.log(key)
                 key = key.map(Number)
                 if (JSON.stringify([...key].sort((a,b)=>a-b)) == JSON.stringify(Array.from({length: 26}, (_, i) => i + 1))) {
                     // NOOP: clave buena
                 }
                 else {
-                    errors.push('The key has missing or repeated elements.')
+                    errors.push('The key has missing, repeated or unnecessary elements.')
                 }
+            }
+            else {
+                errors.push('The key must be composed of numbers (from 1 to 26) separated by commas.')
             }
             break
         case 'affine':
             key = keyInput.value
-            key = key.split(/[( )*,( )*]/)
-            if (key.some(str => !(/^([0-9]|1[0-9]|2[0-5])$/.test(str)))) {
-                errors.push('There are non-whole numbers or numbers out of range (from 0 to 25) in the key.')
-            }
-            else {
-                if (key.length == 2) {
-                    key = key.map(Number)
-                    var gcd = function(a,b) { return (!b)? a:gcd(b,a%b) }
-                    if (gcd(key[0],26)==1) {
-                        // NOOP: clave buena
-                    }
-                    else {
-                        errors.push('The first element of the key is not invertible modulo 26.')
-                    }
+
+            if (/^(([0-9]|1[0-9]|2[0-5])\s*,\s*)([0-9]|1[0-9]|2[0-5])$/.test(key)) {
+                key = key.replace(/\s/g, '')
+                key = key.split(/,/)
+                
+                key = key.map(Number)
+                var gcd = function(a,b) { return (!b)? a:gcd(b,a%b) }
+                if (gcd(key[0],26)==1) {
+                    // NOOP: clave buena
                 }
                 else {
-                    errors.push('The key does not have two elements.')
+                    errors.push('The first element of the key is not invertible modulo 26.')
                 }
+            }
+            else {
+                errors.push('The key must be composed of two numbers (from 0 to 25) separated by commas.')
             }
             break
         case 'vigenere':
             key = keyInput.value
-            key = key.split(/[( )*,( )*]/)
-            if (key.some(str => !(/^([0-9]|1[0-9]|2[0-5])$/.test(str)))) {
-                errors.push('There are non-whole numbers or numbers out of range (from 0 to 25) in the key.')
-            }
-            else {
+
+            if (/^(([0-9]|1[0-9]|2[0-5])\s*,\s*)*([0-9]|1[0-9]|2[0-5])$/.test(key)) {
+                key = key.replace(/\s/g, '')
+                key = key.split(/,/)
                 key = key.map(Number) // clave buena
             }
+            else {
+                errors.push('The key must be composed of numbers (from 0 to 25) separated by commas.')
+            }
+            
             break
         case 'permutation':
             key = keyInput.value
-            key = key.split(/[( )*,( )*]/)
-            if (key.some(str => !(/^([1-9]|1[0-9]|2[0-6])$/.test(str)))) {
-                errors.push('There are non-whole numbers or numbers out of range (from 1 to 26) in the key.')
-            }
-            else {
+
+            if (/^(([1-9]|1[0-9]|2[0-6])\s*,\s*)*([1-9]|1[0-9]|2[0-6])$/.test(key)) {
+                key = key.replace(/\s/g, '')
+                key = key.split(/,/)
+
                 key = key.map(Number)
                 if (JSON.stringify([...key].sort((a,b)=>a-b)) == JSON.stringify(Array.from({length: key.length}, (_, i) => i + 1))) {
                     // NOOP: clave buena
                 }
                 else {
-                    errors.push('The key has missing or repeated elements.')
+                    errors.push('The key has missing, repeated or unnecessary elements.')
                 }
             }
+            else {
+                errors.push('The key must be composed of different numbers (from 1 to some positive number) separated by commas.')
+            }
+
             break
         default: // no puede ser hill
             break
