@@ -249,7 +249,7 @@ cipherButton.addEventListener('click' ,(event) => {
                     outputStr = cryptosystems.encodeShift(key, inputStr)
                     break
                 case 'substitution':
-                    outputStr = cryptosystems.encodePermutation(key, inputStr)
+                    outputStr = cryptosystems.encodeSubstitution(key, inputStr)
                     break
                 case 'affine':
                     outputStr = cryptosystems.encodeAffine(key, inputStr)
@@ -289,7 +289,7 @@ decipherButton.addEventListener('click' ,(event) => {
                     outputStr = cryptosystems.decodeShift(key, inputStr)
                     break
                 case 'substitution':
-                    outputStr = cryptosystems.decodePermutation(key, inputStr)
+                    outputStr = cryptosystems.decodeSubstitution(key, inputStr)
                     break
                 case 'affine':
                     outputStr = cryptosystems.decodeAffine(key, inputStr)
