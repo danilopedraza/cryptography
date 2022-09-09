@@ -17,6 +17,9 @@ const cipherImage = document.getElementById('input-cipherimage')
 const abovePlainThing = document.getElementById('above-plainthing')
 const aboveCipherThing = document.getElementById('above-cipherthing')
 
+const imageText = document.getElementById('image-text')
+const outputCanvas = document.getElementById('output-image')
+
 // cambio de instrucciones y celdas dependiendo de elección del CS
 cipherSelector.addEventListener('change', (event) => {
     keyInput.value = ''
@@ -70,6 +73,10 @@ cipherSelector.addEventListener('change', (event) => {
 
         abovePlainThing.innerText = 'Enter the plaintext:'
         aboveCipherThing.innerText = 'Enter the ciphertext:'
+        
+        imageText.innerText = ''
+        outputCanvas.width = 0
+        outputCanvas.height = 0
     }
 })
 
@@ -220,12 +227,14 @@ function verifyKey() {
             break
         case 'hill':
             key = keyInput.value
-            key = key.replace(/\s/g, '')
-            key = key.split(/,|\n/)
+            //key = key.replace(/\s/g, '')
+            key = key.split(/\n|,/)
+            
             if (key.some((str) => !/[0-9]|[1-9][0-9]+/.test(str))) {
                 errors.push('The key must be composed of numbers separated by commas or lines.')
             }
             else {
+                
                 if (key.length == 4 || key.length == 9 || key.length == 16) {
                     key = key.map(Number)
                 }
@@ -255,12 +264,13 @@ function imageToArray(img) {
     var ctx = c.getContext('2d')
     ctx.drawImage(img, 0, 0)
     var idata = ctx.getImageData(0, 0, img.width, img.height)
-    var arr = []
-    for (var i = 0; i < idata.data.length; i += 4)
-        arr.push(Math.floor(0.299*idata.data[i]+0.587*idata.data[i+1]+0.114*idata.data[i+2]))
+    
+    var arr = new Uint8ClampedArray(idata.data.length/4)
+    for (var i = 0; i < arr.length; i++)
+        arr[i] = Math.floor(0.299*idata.data[4*i]+0.587*idata.data[4*i+1]+0.114*idata.data[4*i+2])
+    
     return arr
 }
-
 
 function verifyAndSendImage(mode, key) {
     if (!(mode == 'decipher' || mode == 'cipher'))
@@ -284,15 +294,33 @@ function verifyAndSendImage(mode, key) {
         var img = new Image()
         img.src = fileURL
 
-        img.addEventListener('load',  (event) => {
+        img.addEventListener('load', (event) => {
             var arr = imageToArray(event.target)
             
             
             if (mode == 'cipher')
-                arr = cryptosystems.encodeAffine(key, arr)
+                arr = cryptosystems.encodeHill(key, arr)
             else
-                arr = cryptosystems.decodeAffine(key, arr)
-            // TODO: Mostrar canvas con imagen
+                arr = cryptosystems.decodeHill(key, arr)
+            
+            var imgData = new Uint8ClampedArray(arr.length*4)
+            for (var i = 0; i < arr.length; i++) {
+                imgData[4*i] = arr[i]
+                imgData[4*i+1] = arr[i]
+                imgData[4*i+2] = arr[i]
+                imgData[4*i+3] = 255
+            }
+            var canvasData = new ImageData(imgData, img.width, img.height)
+            outputCanvas.height = img.height
+            outputCanvas.width = img.width
+            var ctx = outputCanvas.getContext('2d')
+
+            if (mode == 'cipher')
+                imageText.innerText = 'Ciphered image:'
+            else
+                imageText.innerText = 'Deciphered image:'
+
+            ctx.putImageData(canvasData,0,0)
         })
     }
 }

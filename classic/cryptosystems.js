@@ -123,11 +123,12 @@ function decodePermutation(key, str) {
 
 function encodeHill(key, arr) {
     // arr es un arreglo (duh) de 0 a 255 inclusivo
-    return "Hill"
+    // key es un arreglo con 4, 9, o 16 numeros de 0 a 255 inclusivo
+    return arr
 }
 
 function decodeHill(key, arr) {
-    return 'this is just a test'
+    return arr
 }
 
 export {encodeShift, encodeSubstitution, encodeAffine, encodeVigenere, encodePermutation, encodeHill}

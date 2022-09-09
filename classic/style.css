@@ -63,3 +63,10 @@ main .main-content .row .left-col form #errors {
     color: red;
     padding: 10px 0px;
 }
+
+main .main-content .row .left-col #output-image {
+    padding-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
