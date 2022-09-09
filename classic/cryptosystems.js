@@ -121,11 +121,12 @@ function decodePermutation(key, str) {
 }
 
 
-function encodeHill(key, img) {
+function encodeHill(key, arr) {
+    // arr es un arreglo (duh) de 0 a 255 inclusivo
     return "Hill"
 }
 
-function decodeHill(key, img) {
+function decodeHill(key, arr) {
     return 'this is just a test'
 }
 

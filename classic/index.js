@@ -11,7 +11,7 @@ const keyInput = document.querySelector('.input-key')
 
 const plainText = document.getElementById('input-plaintext')
 const cipherText = document.getElementById('input-ciphertext')
-const clearImage = document.getElementById('input-clearimage')
+const plainImage = document.getElementById('input-plainimage')
 const cipherImage = document.getElementById('input-cipherimage')
 
 const abovePlainThing = document.getElementById('above-plainthing')
@@ -52,7 +52,7 @@ cipherSelector.addEventListener('change', (event) => {
         
         plainText.style.display = 'none'
         cipherText.style.display = 'none'
-        clearImage.style.display = 'block'
+        plainImage.style.display = 'block'
         cipherImage.style.display = 'block'
 
         abovePlainThing.innerText = 'Upload the plainimage:'
@@ -65,7 +65,7 @@ cipherSelector.addEventListener('change', (event) => {
         
         plainText.style.display = 'block'
         cipherText.style.display = 'block'
-        clearImage.style.display = 'none'
+        plainImage.style.display = 'none'
         cipherImage.style.display = 'none'
 
         abovePlainThing.innerText = 'Enter the plaintext:'
@@ -218,7 +218,23 @@ function verifyKey() {
             }
 
             break
-        default: // no puede ser hill
+        case 'hill':
+            key = keyInput.value
+            key = key.replace(/\s/g, '')
+            key = key.split(/,|\n/)
+            if (key.some((str) => !/[0-9]|[1-9][0-9]+/.test(str))) {
+                errors.push('The key must be composed of numbers separated by commas or lines.')
+            }
+            else {
+                if (key.length == 4 || key.length == 9 || key.length == 16) {
+                    key = key.map(Number)
+                }
+                else {
+                    errors.push('Due to its size, the entered key cannot be interpreted as a matrix.')
+                }
+            }
+            break
+        default:
             break
     }
     
@@ -230,6 +246,55 @@ function verifyKey() {
     if (errors.length == 0)
         return key
     return null
+}
+
+function imageToArray(img) {
+    var c = document.createElement('canvas')
+    c.width = img.width
+    c.height = img.height
+    var ctx = c.getContext('2d')
+    ctx.drawImage(img, 0, 0)
+    var idata = ctx.getImageData(0, 0, img.width, img.height)
+    var arr = []
+    for (var i = 0; i < idata.data.length; i += 4)
+        arr.push(Math.floor(0.299*idata.data[i]+0.587*idata.data[i+1]+0.114*idata.data[i+2]))
+    return arr
+}
+
+
+function verifyAndSendImage(mode, key) {
+    if (!(mode == 'decipher' || mode == 'cipher'))
+        return undefined
+    
+    var file
+    if (mode == 'cipher')
+        file = document.getElementById('input-plainimage')
+    else // mode == 'decipher'
+        file = document.getElementById('input-cipherimage')
+    
+    
+    
+    if (file.files.length == 0) {
+        // TODO: avisar de error, no hay imagen
+        return null
+    }
+    else {
+        file = file.files[0]
+        const fileURL = URL.createObjectURL(file)
+        var img = new Image()
+        img.src = fileURL
+
+        img.addEventListener('load',  (event) => {
+            var arr = imageToArray(event.target)
+            
+            
+            if (mode == 'cipher')
+                arr = cryptosystems.encodeAffine(key, arr)
+            else
+                arr = cryptosystems.decodeAffine(key, arr)
+            // TODO: Mostrar canvas con imagen
+        })
+    }
 }
 
 
@@ -268,6 +333,13 @@ cipherButton.addEventListener('click' ,(event) => {
     }
     else {
         // TODO: procesar hill
+        var key = verifyKey()
+        if (key == null) {
+            // NOOP: verifyKey ya hizo lo necesario
+        }
+        else {
+            verifyAndSendImage('cipher', key)
+        }
     }
     
 })
@@ -308,5 +380,12 @@ decipherButton.addEventListener('click' ,(event) => {
     }
     else {
         // TODO: procesar hill
+        var key = verifyKey()
+        if (key == null) {
+            // NOOP: verifyKey ya hizo lo necesario
+        }
+        else {
+            verifyAndSendImage('decipher', key)
+        }
     }
 })
