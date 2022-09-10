@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8"> 
+        <meta name="description" content="Shift Cipher Cryptanalysis">
+        <meta name="robots" content="index,follow">
+        <title>Shift Cryptanalysis</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../../style.css">
+        <link rel="stylesheet" href="./style.css">
+        <link rel="icon" href="../favicon.ico">
+        
+        <script src="./index.js" type="module" defer></script>
+    </head>
+    <body>
+        <header>
+            <a href="../../../" class="name"><h3>MySecret</h3></a>
+            <ul>
+                <li><a href="../../../about/">About</a></li>
+            </ul>
+        </header>
+
+        <main>
+            <div class="main-content">
+                <h3 class="home-text">Attacking Classic Cryptosistems - Shift Cipher</h3>
+                <div class="row">
+                    <div class="left-col">
+                        <p>
+                            For the Shift Cipher, we can display all the possible plaintexts
+                            for a given ciphertext. We can algo guess by observing frequencies.
+                        </p>
+                        <p>Non-english, non-alphabetic letters will be ignored as usual.</p>
+                        <form id='form'>
+                            <p>Enter the ciphertext:</p>
+                            <textarea id="input-ciphertext" name="ciphertext" rows="4" autocomplete="off"></textarea>
+                            <button type="button" id="attack-button">Attack</button>
+                        </form>
+
+                        <p id="comparation-textbox"></p>
+
+                    </div>
+                    <div class="right-col">
+                        <h3>Classic cryptosistems</h3>
+                        <ul>
+                            <li>Shift Cryptanalysis</li>
+                            <li><a href="../substitution/">Substitution Cryptanalysis</a></li>
+                            <li><a href="../affine/">Affine Cryptanalysis</a></li>
+                            <li><a href="../vigenere/">Vigenère Cryptanalysis</a></li>
+                            <li><a href="../hill/">Hill Cryptanalysis</a></li>
+                        </ul>
+                        <a href="../public"><h3>Public key cryptosistems</h3></a>
+                        <ul>
+                            <li><a href="../public/#7">RSA</a></li>
+                            <li><a href="../public/#8">ElGamal</a></li>
+                        </ul>
+                    </div>
+            </div>
+            
+        </main>
+    </body>
+</html>

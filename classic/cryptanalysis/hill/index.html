@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8"> 
+        <meta name="description" content="Vigenère Cipher Cryptanalysis">
+        <meta name="robots" content="index,follow">
+        <title>Vigenère Cryptanalysis</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../../style.css">
+        <link rel="stylesheet" href="./style.css">
+        <link rel="icon" href="../favicon.ico">
+        
+        <script src="./index.js" type="module" defer></script>
+    </head>
+    <body>
+        <header>
+            <a href="../../../" class="name"><h3>MySecret</h3></a>
+            <ul>
+                <li><a href="../../../about/">About</a></li>
+            </ul>
+        </header>
+
+        <main>
+            <div class="main-content">
+                <h3 class="home-text">Attacking Classic Cryptosistems - Hill Cipher</h3>
+                <div class="row">
+                    <div class="left-col">
+                        <p>
+                            We are going to analyze the Hill Cipher by a known plaintext attack.
+                            A list of pairs of plaintext and ciphertext will be needed.
+                            With that, a linear system will be formed and maybe be solved.
+                        </p>
+                        <p>Non-english, non-alphabetic letters will be ignored as usual.</p>
+                        <form id='form'>
+                            <h4>The key</h4>
+                            
+                            <input type="radio" name="key-option" id="no-guess">
+                            <label for="no-guess">I don't know of what the length of the key could be</label>
+                            <p></p>
+                            <input type="radio" name="key-option" id="some-guess">
+                            <label for="some-guess">I have a guess or some guesses of what the length of the key could be</label>
+                            <p></p>
+                            <input type="radio" name="key-option" id="the-key">
+                            <label for="key-option">I know the length of the key</label>
+
+                            <p style="padding-top: 20px;">Enter the ciphertext:</p>
+                            <div class="row">
+                                <textarea id="input-plaintext" name="ciphertext" rows="8" autocomplete="off"></textarea>
+                                <textarea id="input-ciphertext" name="ciphertext" rows="8" autocomplete="off"></textarea>
+                            </div>
+                            
+                            <button type="button" id="attack-button">Attack</button>
+                        </form>
+                    </div>
+                    <div class="right-col">
+                        <h3>Classic cryptosistems</h3>
+                        <ul>
+                            <li><a href="../shift/">Shift Cryptanalysis</a></li>
+                            <li><a href="../substitution/">Substitution Cryptanalysis</a></li>
+                            <li><a href="../affine/">Affine Cryptanalysis</a></li>
+                            <li><a href="../vigenere/">Vigenère Cryptanalysis</a></li>
+                            <li>Hill Cryptanalysis</li>
+                        </ul>
+                        <a href="../public"><h3>Public key cryptosistems</h3></a>
+                        <ul>
+                            <li><a href="../public/#7">RSA</a></li>
+                            <li><a href="../public/#8">ElGamal</a></li>
+                        </ul>
+                    </div>
+            </div>
+            
+        </main>
+    </body>
+</html>
