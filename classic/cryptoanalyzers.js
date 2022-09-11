@@ -10,6 +10,15 @@ const occurProb=[
     [ 'Q', 0.001 ]
 ]
 
+const digramFreq = [
+    'TH', 'HE', 'IN', 'EN', 'NT',
+    'RE', 'ER', 'AN', 'TI', 'ES'
+]
+
+const TrigramFreq = [
+    'THE', 'AND', 'THA', 'ENT', 'ING'
+]
+
 function abs(n){
     return (26+n)%26;
 }
@@ -40,6 +49,32 @@ function getFrecuences(str){
     frecuences.sort(function(a,b){return b[1]-a[1]});
 
     return frecuences;
+}
+
+function getDigramFrequences(str) {
+    let frecuences = {}
+    for (let i = 0; i < str.length-1; i++) {
+        let substr = str.substring(i,i+2)
+        if (substr in frecuences)
+            frecuences[substr]++
+        else
+            frequences[substr] = 1
+    }
+
+    return frequences
+}
+
+function getTrigramFrequences(str) {
+    let frecuences = {}
+    for (let i = 0; i < str.length-2; i++) {
+        let substr = str.substring(i,i+3)
+        if (substr in frecuences)
+            frecuences[substr]++
+        else
+            frequences[substr] = 1
+    }
+
+    return frequences
 }
 
 function sugestedConj(frecuences){
@@ -92,4 +127,9 @@ function analyzeVigenere(){}
 
 function analyzeHill(){}
 
-export {occurProb, getFrecuences, code}
+export {occurProb, getFrecuences,
+        digramFreq, getDigramFrequences,
+        TrigramFreq, getTrigramFrequences,
+        getKey,
+        code
+    }

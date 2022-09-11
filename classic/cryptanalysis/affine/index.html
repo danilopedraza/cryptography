@@ -11,6 +11,8 @@
         <link rel="icon" href="../favicon.ico">
         
         <script src="./index.js" type="module" defer></script>
+        <script src="../../cryptosystems.js" type="module" defer></script>
+        <script src="../../cryptoanalyzers.js" type="module" defer></script>
     </head>
     <body>
         <header>
@@ -35,6 +37,15 @@
                             <textarea id="input-ciphertext" name="ciphertext" rows="4" autocomplete="off"></textarea>
                             <button type="button" id="attack-button">Attack</button>
                         </form>
+
+                        <p id="guesses"></p>
+
+                        <div class="row" id="guess-key-row">
+                            <input type="text" id="key">
+                            <button id="try-guess-button">Try guess</button>
+                        </div>
+
+                        <p id="comparation-textbox"></p>
                     </div>
                     <div class="right-col">
                         <div class="button" style="margin-top: 15px;"><a href="../../">Classic cryptosistems</a></div>
