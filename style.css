@@ -120,7 +120,7 @@ main .main-content .row .right-col ul li {
     margin-bottom: 3px;
 }
 
-main .main-content .row .right-col ul li:hover {
+main .main-content .row .right-col ul li a:hover {
     text-decoration: underline;
 }
 
