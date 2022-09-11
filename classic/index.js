@@ -91,12 +91,12 @@ randomKeyButton.addEventListener('click', (event) => {
     var availableNums, res, phiOf26, i, keyLength
     switch (cipherSelector.value) {
         case 'shift':
-            keyInput.value = randint(0,26).toString()
+            keyInput.value = String.fromCharCode(65+randint(0,26))
             break
         case 'substitution':
-            availableNums = Array.from({length: 26}, (_, i) => i + 1)
+            availableNums = Array.from({length: 26}, (_, i) => String.fromCharCode(65+i))
             res = Array.from({length: 26}, () => availableNums.splice(randint(0,availableNums.length),1)[0])
-            keyInput.value = res.join()
+            keyInput.value = res.join('')
             break
         case 'affine':
             phiOf26 = [1,3,5,7,9,11,15,17,19,21,23,25]
@@ -105,7 +105,7 @@ randomKeyButton.addEventListener('click', (event) => {
             break
         case 'vigenere':
             keyLength = randint(5,20+1)
-            keyInput.value = Array.from({length: keyLength}, () => randint(0,26).toString()).join()
+            keyInput.value = Array.from({length: keyLength}, () => String.fromCharCode(65+randint(0,26))).join('')
             break
         case 'permutation':
             keyLength = randint(5,20+1)
@@ -136,31 +136,21 @@ function verifyKey() {
     switch (cipherSelector.value) {
         case 'shift':
             key = keyInput.value
-            if (/^([0-9]|[1-9][0-9]+)$/.test(key)) {
-                key = parseInt(key)
-                
-                if (0 <= key && key <= 25) {
-                    // NOOP: clave buena
-                }
-                else {
-                    // número fuera de representantes principales
-                    warnings.push('The key is a number, but is not between 0 and 25. It is going to be taken modulo 26.')
-                }
-                
-                key = key % 26
+            if (/^\s*[a-zA-Z]\s*$/.test(key)) {
+                key = key.replace(/\s/g, '')
+                key = key.toUpperCase().charCodeAt(0)-65
             }
             else {
-                errors.push('The submitted key either is not a whole positive number, or has leading zeros.')
+                errors.push('The submitted key is not an english letter')
             }
             break
         case 'substitution':
             key = keyInput.value
 
-            if (/^(([1-9]|1[0-9]|2[0-6])\s*,\s*)*([1-9]|1[0-9]|2[0-6])$/.test(key)) {
+            if (/^\s*([a-zA-Z]\s*){26}$/.test(key)) {
                 key = key.replace(/\s/g, '')
-                key = key.split(/,/)
-                console.log(key)
-                key = key.map(Number)
+                key = Array.from(key.toUpperCase())
+                key = Array.from(key, char => char.charCodeAt(0)-65+1)
                 if (JSON.stringify([...key].sort((a,b)=>a-b)) == JSON.stringify(Array.from({length: 26}, (_, i) => i + 1))) {
                     // NOOP: clave buena
                 }
@@ -169,7 +159,7 @@ function verifyKey() {
                 }
             }
             else {
-                errors.push('The key must be composed of numbers (from 1 to 26) separated by commas.')
+                errors.push('The key must be composed of the 26 english letters without repetitions.')
             }
             break
         case 'affine':
@@ -194,14 +184,15 @@ function verifyKey() {
             break
         case 'vigenere':
             key = keyInput.value
+            key = Array.from(key.toUpperCase())
+            key = Array.from(key, char => char.charCodeAt(0)-65+1)
 
-            if (/^(([0-9]|1[0-9]|2[0-5])\s*,\s*)*([0-9]|1[0-9]|2[0-5])$/.test(key)) {
+            if (/^\s*([a-zA-Z]\s*)+$/.test(key)) {
                 key = key.replace(/\s/g, '')
-                key = key.split(/,/)
                 key = key.map(Number) // clave buena
             }
             else {
-                errors.push('The key must be composed of numbers (from 0 to 25) separated by commas.')
+                errors.push('The key must be a word in the english alphabet.')
             }
             
             break
