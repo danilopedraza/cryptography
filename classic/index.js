@@ -28,16 +28,16 @@ cipherSelector.addEventListener('change', (event) => {
 
     switch (event.target.value) {
         case 'shift':
-            keyInputGuide.innerHTML = 'ⓘ A key is a whole number from 0 to 25.'
+            keyInputGuide.innerHTML = 'ⓘ A key is an english letter.'
             break
         case 'substitution':
-            keyInputGuide.innerHTML = 'ⓘ A key is a list of the numbers from 1 to 26 without repetitions, separated by commas.'
+            keyInputGuide.innerHTML = 'ⓘ A key is a list of all the english without repetitions.'
             break
         case 'affine':
             keyInputGuide.innerHTML = 'ⓘ A key is a pair of numbers, both of them from 0 to 25.<br>ⓘ The first number must be invertible modulo 26.'
             break
         case 'vigenere':
-            keyInputGuide.innerHTML = 'ⓘ A key is a list of numbers from 0 to 25, separated by commas. The numbers can be repeated.'
+            keyInputGuide.innerHTML = 'ⓘ A key is a list of english letters. The letters can be repeated.'
             break
         case 'permutation':
             keyInputGuide.innerHTML = 'ⓘ A key is a list of the numbers from 1 to some positive whole number without repetitions, separated by commas.'
@@ -186,11 +186,11 @@ function verifyKey() {
             break
         case 'vigenere':
             key = keyInput.value
-            key = Array.from(key.toUpperCase())
-            key = Array.from(key, char => char.charCodeAt(0)-65+1)
 
             if (/^\s*([a-zA-Z]\s*)+$/.test(key)) {
                 key = key.replace(/\s/g, '')
+                key = Array.from(key.toUpperCase())
+                key = Array.from(key, char => char.charCodeAt(0)-65)
                 key = key.map(Number) // clave buena
             }
             else {

@@ -2,9 +2,9 @@
 <html lang="es">
     <head>
         <meta charset="UTF-8"> 
-        <meta name="description" content="MySecret app">
+        <meta name="description" content="Cipher and decipher with classic cryptosystems">
         <meta name="robots" content="index,follow">
-        <title>MySecret</title>
+        <title>Classic Cryptosystems</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../style.css">
         <link rel="stylesheet" href="./style.css">
@@ -15,7 +15,7 @@
     </head>
     <body>
         <header>
-            <a href="../" class="name"><h3>MySecret</h3></a>
+            <a href="../" class="name"><h3>Crabbit</h3></a>
             <ul>
                 <li><a href="../about/">About</a></li>
             </ul>
@@ -24,71 +24,60 @@
         <main>
             <div class="main-content">
                 <h3 class="home-text">Classic Cryptosistems</h3>
-                <div class="row">
-                    <div class="left-col">
-                        <p>
-                            Cipher and decipher text with simple but powerful algorithms.
-                        </p>
-                        <form id='form'>
-                            <p>Which algorithm do you want to use?</p>
-                            <select name="cipher" class="cipher-selector" autocomplete="off">
-                                <option value="shift">Shift Cipher</option>
-                                <option value="substitution">Substitution Cipher</option>
-                                <option value="affine">Affine Cipher</option>
-                                <option value="vigenere">Vigenère Cipher</option>
-                                <option value="permutation">Permutation Cipher</option>
-                                <option value="hill">Hill Cipher</option>
-                            </select>
-                            <p>Enter the key:</p>
-                            <div class="key-row">
-                                <textarea class="input-key" name="key" rows="1" autocomplete="off"></textarea>
-                                <button type="button" class="random-key-button">
-                                    Generate random key
-                                </button>
-                            </div>
-                            <p id="key-input-guide">
-                                ⓘ A key is a whole number from 0 to 25.
+                    <div class="row">
+                        <div class="left-col">
+                            <p>
+                                Cipher and decipher text with simple but powerful algorithms.
                             </p>
-                            <p id="above-plainthing">Enter the plaintext:</p>
-                            <textarea class="input-text" id="input-plaintext" name="plaintext" rows="5"></textarea>
-                            <input type="file" class="input-image" id="input-plainimage"
-                                name="plainImage" accept="image/jpeg, image/png, image/jpg">
-                            <p id="above-cipherthing">Enter the ciphertext:</p>
-                            <textarea class="input-text" id="input-ciphertext" name="ciphertext" rows="5"></textarea>
-                            <input type="file" class="input-image" id="input-cipherimage"
-                                name="cipherimage" accept="image/jpeg, image/png, image/jpg">
+                            <form id='form'>
+                                <p>Which algorithm do you want to use?</p>
+                                <select name="cipher" class="cipher-selector" autocomplete="off">
+                                    <option value="shift">Shift Cipher</option>
+                                    <option value="substitution">Substitution Cipher</option>
+                                    <option value="affine">Affine Cipher</option>
+                                    <option value="vigenere">Vigenère Cipher</option>
+                                    <option value="permutation">Permutation Cipher</option>
+                                    <option value="hill">Hill Cipher</option>
+                                </select>
+                                <p>Enter the key:</p>
+                                <div class="key-row">
+                                    <textarea class="input-key" name="key" rows="1" autocomplete="off"></textarea>
+                                    <button type="button" class="random-key-button">
+                                        Generate random key
+                                    </button>
+                                </div>
+                                <p id="key-input-guide">
+                                    ⓘ A key is a whole number from 0 to 25.
+                                </p>
+                                <p id="above-plainthing">Enter the plaintext:</p>
+                                <textarea class="input-text" id="input-plaintext" name="plaintext" rows="5"></textarea>
+                                <input type="file" class="input-image" id="input-plainimage"
+                                    name="plainImage" accept="image/jpeg, image/png, image/jpg">
+                                <p id="above-cipherthing">Enter the ciphertext:</p>
+                                <textarea class="input-text" id="input-ciphertext" name="ciphertext" rows="5"></textarea>
+                                <input type="file" class="input-image" id="input-cipherimage"
+                                    name="cipherimage" accept="image/jpeg, image/png, image/jpg">
 
-                            <div class="buttons-row">
-                                <button type="button" id="start-cipher">Cipher</button>
-                                <button type="button" id="start-decipher">Decipher</button>
-                            </div>
-                            <p id="errors"></p>
-                        </form>
-                        <p id="image-text"></p>
-                        <canvas id="output-image" width="0" height="0"></canvas>
-                    </div>
-                    <div class="right-col">
-                        <h3>Classic cryptosistems</h3>
-                        <h3>Classic Cryptanalysis</h3>
-                        <ul>
-                            <li><a href="./cryptanalysis/shift/">Shift Cryptanalysis</a></li>
-                            <li><a href="./cryptanalysis/substitution/">Substitution Cryptanalysis</a></li>
-                            <li><a href="./cryptanalysis/affine/">Affine Cryptanalysis</a></li>
-                            <li><a href="./cryptanalysis/vigenere/">Vigenère Cryptanalysis</a></li>
-                            <li><a href="./cryptanalysis/hill/">Hill Cryptanalysis</a></li>
-                        </ul>
-                        <a href="../public"><h3>Public key cryptosistems</h3></a>
-                        <ul>
-                            <li><a href="../public/#7">RSA</a></li>
-                            <li><a href="../public/#8">ElGamal</a></li>
-                        </ul>
-                    </div>
+                                <div class="buttons-row">
+                                    <button type="button" id="start-cipher">Cipher</button>
+                                    <button type="button" id="start-decipher">Decipher</button>
+                                </div>
+                                <p id="errors"></p>
+                            </form>
+                            <p id="image-text"></p>
+                            <canvas id="output-image" width="0" height="0"></canvas>
+                        </div>
+                        <div class="right-col">
+                            <div class="button" style="margin-top: 15px;"><a href="./">Classic cryptosistems</a></div>
+                            <div class="button"><a href="./cryptanalysis/shift/">Shift Cryptanalysis</a></div>
+                            <div class="button"><a href="./cryptanalysis/substitution/">Substitution Cryptanalysis</a></div>
+                            <div class="button"><a href="./cryptanalysis/affine/">Affine Cryptanalysis</a></div>
+                            <div class="button"><a href="./cryptanalysis/vigenere/">Vigenère Cryptanalysis</a></div>
+                            <div class="button"><a href="./cryptanalysis/hill/">Hill Cryptanalysis</a></div>
+                        </div>
+                    </div>    
                 </div>
-                
-                    
-                </div>
-            </div>
-            
+            </div> 
         </main>
     </body>
 </html>

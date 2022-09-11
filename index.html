@@ -2,16 +2,16 @@
 <html lang="es">
     <head>
         <meta charset="UTF-8"> 
-        <meta name="description" content="MySecret app">
+        <meta name="description" content="Cryptography app">
         <meta name="robots" content="index,follow">
-        <title>MySecret</title>
+        <title>Crabbit</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./style.css">
         <link rel="icon" href="./favicon.ico">
     </head>
     <body>
         <header>
-            <a href="./" class="name"><h3>MySecret</h3></a>
+            <a href="./" class="name"><h3>Crabbit</h3></a>
             <ul>
                 <li><a href="./about/">About</a></li>
             </ul>
@@ -19,37 +19,77 @@
 
         <main>
             <div class="main-content">
-                <h3 class="home-text">Home</h3>
-                <div class="row">
-                    <div class="left-col">
-                        <p>
-                            Here you can use different methods for hiding information, and
-                            even try to reveal hidden information!
-                        </p>
+                <div id="main-column">
+                    <div id="presentation">
+                        <div id="main-text">
+                            <h1>Hiding and revealing information has never been so easy.</h1>
+                            <p>Use different algorithms for hiding your data. Try to get keys from ciphertext.</p>
+                        </div>
                     </div>
-                    <div class="right-col">
-                        <a href="./classic/"><h3>Classic cryptosistems</h3></a>
-                        <h3>Classic Cryptanalysis</h3>
-                        <a href=""></a>
-                        <ul>
-                            <li><a href="./classic/cryptanalysis/shift/">Shift Cryptanalysis</a></li>
-                            <li><a href="./classic/cryptanalysis/substitution/">Substitution Cryptanalysis</a></li>
-                            <li><a href="./classic/cryptanalysis/affine/">Affine Cryptanalysis</a></li>
-                            <li><a href="./classic/cryptanalysis/vigenere/">Vigenère Cryptanalysis</a></li>
-                            <li><a href="./classic/cryptanalysis/hill/">Hill Cryptanalysis</a></li>
-                        </ul>
-                        <a href="./public"><h3>Public key cryptosistems</h3></a>
-                        <ul>
-                            <li><a href="#7">RSA</a></li>
-                            <li><a href="#8">ElGamal</a></li>
-                        </ul>
+                    <p id="below-presentation">Algorithms and cryptanalysis that we implemented:</p>
+                    <div id="services">
+                        <div class="presentation-box" id="mono-cs">
+                            <p class="title">Monoalphabetic ciphers</p>
+                            <p class="explanation" style="margin-bottom: 50px;">
+                                Use character-by-character ciphers.
+                            </p>
+                            <div class="button"><a href="./classic/">Go</a></div>
+                        </div>
+                        <div class="presentation-box" id="multi-cs">
+                            <p class="title">Multialphabetic ciphers</p>
+                            <p class="explanation" style="margin-bottom: 50px;">
+                                Cipher texts block-by-block. 
+                            </p>
+                            <div class="button"><a href="./classic/">Go</a></div>
+                        </div>
+                        <div class="presentation-box" id="hill">
+                            <p class="title">Image ciphering with the Hill Cipher</p>
+                            <p class="explanation">
+                                Obfuscate images using a cipher based on matrix multiplication.
+                            </p>
+                            <div class="button"><a href="./classic/">Go</a></div>
+                        </div>
+                        <div class="presentation-box" id="shift-analysis">
+                            <p class="title">Cryptanalysis of the Shift Cipher</p>
+                            <p class="explanation">
+                                Get all the possible plaintexts obtainable from your ciphertext.
+                            </p>
+                            <div class="button"><a href="./classic/cryptanalysis/shift/">Go</a></div>
+                        </div>
+                        <div class="presentation-box" id="sub-analysis">
+                            <p class="title">Cryptanalysis of the Substitution Cipher</p>
+                            <p class="explanation">
+                                Analyze the frequencies of the letters to guess the relations between characters.
+                            </p>
+                            <div class="button"><a href="./classic/cryptanalysis/substitution/">Go</a></div>
+                        </div>
+                        <div class="presentation-box" id="affine-analysis">
+                            <p class="title">Cryptanalysis of the Affine Cipher</p>
+                            <p class="explanation">
+                                Get the key by solving small systems of equations derived from guessing.
+                            </p>
+                            <div class="button"><a href="./classic/cryptanalysis/affine/">Go</a></div>
+                        </div>
+                        <div class="presentation-box" id="vig-analysis">
+                            <p class="title">Cryptanalysis of the Vigenère Cipher</p>
+                            <p class="explanation">
+                                Guess the length of the key and analyze frequencies to guess each character of it.
+                            </p>
+                            <div class="button"><a href="./classic/cryptanalysis/vigenere/">Go</a></div>
+                        </div>
+                        <div class="presentation-box" id="hill-analysis">
+                            <p class="title">Cryptanalysis of the Hill Cipher</p>
+                            <p class="explanation">
+                                Solve a linear system derived from pairs of plaintext and ciphertext.
+                            </p>
+                            <div class="button"><a href="./classic/cryptanalysis/hill/">Go</a></div>
+                        </div>
                     </div>
-                </div>
-                
-                    
                 </div>
             </div>
             
         </main>
+
+        <footer></footer>
     </body>
 </html>

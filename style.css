@@ -16,7 +16,7 @@ a {
 }
 
 body {
-    background-color: rgb(211, 207, 207);
+    background-color: rgb(230, 244, 253);
 }
 
 /* Estilos para el header */
@@ -61,15 +61,14 @@ main {
     display: flex;
     justify-content: center;
     font-size: 1.6rem;
-    background: rgb(211, 207, 207);
+
 }
 
 main .main-content {
     display: grid;
-    width: 900px;
+    width: 1100px;
     height: inherit;
 
-    background-color: rgb(211, 207, 207);
 }
 
 main .main-content .home-text {
@@ -84,7 +83,7 @@ main .main-content .home-text {
 
 main .main-content .row {
     display: grid;
-    grid-template-columns: 1fr 250px;
+    grid-template-columns: 1fr 300px;
 
     min-height: inherit;
 
@@ -120,23 +119,135 @@ main .main-content .row .right-col ul li {
     margin-bottom: 3px;
 }
 
-main .main-content .row .right-col ul li a:hover {
-    text-decoration: underline;
+
+main .main-content #main-column {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
 }
 
-main .main-content .row .right-col a:hover {
-    text-decoration: underline;
+main .main-content #main-column #presentation {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+main .main-content #main-column #presentation #main-text {
+    text-align: center;
+    margin: 50px 50px;
+    font-style: bold;
+}
+
+main .main-content #main-column #presentation #main-text p {
+    margin-top: 20px;
+    font-size: 2rem;
+}
+
+main .main-content #main-column #presentation #main-text h1 {
+    overflow-wrap: break-word;
+}
+
+main .main-content #main-column #presentation img {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 65%;
+}
+
+
+main .main-content #main-column #below-presentation {
+    text-align: center;
+    padding: 50px 0;
+    color: rgb(92, 92, 92);
+}
+
+main .main-content #main-column #services {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.presentation-box {
+    height: 300px;
+    margin: 10px 10px;
+    border-radius: 5px;
+    background-color: rgb(230, 240, 253);
+    border: 1px solid rgb(199, 199, 199);
+}
+
+.presentation-box .title {
+    margin: 20px 20px;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.presentation-box .explanation {
+    height: 45%;
+    margin: 25px 15px;
+    text-align: center;
+
+}
+
+.button {
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 5px;
+    border-radius: 15px;
+    border: 1px solid rgb(199, 199, 199);
+    background-color: rgb(238, 242, 255);
+}
+
+.button:hover {
+    background-color: rgb(224, 229, 241);
+}
+
+.button a {
+    text-decoration: none;
+    color: inherit;
+
+    width: 100%;
+    text-align: center;
 }
 
 /* media queries */
 
-@media (max-width: 700px) {
-    main .main-content .row {
+@media (max-width: 500px) {
+    main .main-content #main-column #services {
         grid-template-columns: 1fr;
     }
 }
 
+@media (max-width: 650px) {
+
+    main .main-content #main-column #presentation img {
+        display: none;
+    }
+
+    main .main-content #main-column #presentation {
+        grid-template-columns: 1fr;
+    }
+
+    main .main-content #main-column #services {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
 @media (max-width: 900px) {
+    main .main-content .row {
+        grid-template-columns: 1fr;
+    }
+    
+    main .main-content #main-column #services {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+
+@media (max-width: 1100px) {
     main .main-content {
         width: 100%;
         padding-left: 10px;
