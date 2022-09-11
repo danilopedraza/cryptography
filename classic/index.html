@@ -13,7 +13,7 @@
         <script src="./index.js" type="module" defer></script>
         <script src="./cryptosystems.js" type="module" defer></script>
     </head>
-    <body>
+    <body class="custom-background">
         <header>
             <a href="../" class="name"><h3>Crabbit</h3></a>
             <ul>
@@ -59,21 +59,23 @@
                                     name="cipherimage" accept="image/jpeg, image/png, image/jpg">
 
                                 <div class="buttons-row">
-                                    <button type="button" id="start-cipher">Cipher</button>
-                                    <button type="button" id="start-decipher">Decipher</button>
+                                    <button type="button" class="random-key-button" id="start-cipher">Cipher</button>
+                                    <button type="button" class="random-key-button" id="start-decipher">Decipher</button>
                                 </div>
                                 <p id="errors"></p>
                             </form>
                             <p id="image-text"></p>
                             <canvas id="output-image" width="0" height="0"></canvas>
                         </div>
-                        <div class="right-col">
+                        <div class="right-col back">
+                            <div class="selectonator">
                             <div class="button" style="margin-top: 15px;"><a href="./">Classic cryptosistems</a></div>
                             <div class="button"><a href="./cryptanalysis/shift/">Shift Cryptanalysis</a></div>
                             <div class="button"><a href="./cryptanalysis/substitution/">Substitution Cryptanalysis</a></div>
                             <div class="button"><a href="./cryptanalysis/affine/">Affine Cryptanalysis</a></div>
                             <div class="button"><a href="./cryptanalysis/vigenere/">Vigenère Cryptanalysis</a></div>
                             <div class="button"><a href="./cryptanalysis/hill/">Hill Cryptanalysis</a></div>
+                            </div>
                         </div>
                     </div>    
                 </div>
