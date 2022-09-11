@@ -1,6 +1,5 @@
 import * as cryptosystems from './cryptosystems.js'
-import * as matrix from './Matrix.js'
-
+import * as matrix from './matrix.js'
 
 const cipherSelector = document.querySelector('.cipher-selector')
 
@@ -43,7 +42,7 @@ cipherSelector.addEventListener('change', (event) => {
             keyInputGuide.innerHTML = 'ⓘ A key is a list of the numbers from 1 to some positive whole number without repetitions, separated by commas.'
             break
         case 'hill':
-            keyInputGuide.innerHTML = 'ⓘ A key is a list of 4, 9 or 16 numbers from 0 to 255. They can be repeated.<br>ⓘ You can separate the numbers with lines or just put them in a single line (separated by commas): they are going to be interpreted as a matrix either way.'
+            keyInputGuide.innerHTML = 'ⓘ A key is a list of 4, 9 or 16 numbers from 0 to 255. They can be repeated.<br>ⓘ You can separate the numbers with lines or just put them in a single line (separated by commas): they are going to be interpreted as a matrix either way. The matrix must be invertible modulo 256.'
             break
         default:
             // NOOP
@@ -115,13 +114,16 @@ randomKeyButton.addEventListener('click', (event) => {
             keyInput.value = res.join()
             break
         case 'hill':
-            keyLength = randint(2,4+1)
-            res = Array.from(
-                {length: keyLength},
-                () => Array.from({length: keyLength}, () => randint(0,256)).join()
-            )
-            keyInput.value = res.join('\n')
-
+            do {
+                keyLength = randint(2,4+1)
+                res = Array.from(
+                    {length: keyLength},
+                    () => Array.from({length: keyLength}, () => randint(0,256)).join()
+                )
+                res = res.join('\n')
+                var key = res.split(/\n|,/)
+            } while(!matrix.invertible(matrix.arrayToMatrix(key)));
+            keyInput.value = res
             break
         default:
             // NOOP
@@ -260,7 +262,6 @@ function imageToArray(img) {
     var ctx = c.getContext('2d')
     ctx.drawImage(img, 0, 0)
     var idata = ctx.getImageData(0, 0, img.width, img.height)
-    
     var arr = new Uint8ClampedArray(idata.data.length/4)
     for (var i = 0; i < arr.length; i++)
         arr[i] = Math.floor((idata.data[4*i]+idata.data[4*i+1]+idata.data[4*i+2])/3)
@@ -315,7 +316,7 @@ function verifyAndSendImage(mode, key) {
             else
                 imageText.innerText = 'Deciphered image:'
 
-            ctx.putImageData(canvasData,0,0)
+            ctx.putImageData(canvasData, 0, 0)
         })
     }
 }

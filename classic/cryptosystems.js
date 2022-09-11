@@ -1,4 +1,4 @@
-import * as matrix from './Matrix.js'
+import * as matrix from './matrix.js'
 
 function textToArray(str) {
     let V = Array(str.length)

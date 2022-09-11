@@ -25,11 +25,8 @@ function shrunkMatrix(M, a, b) {
 function invertible(M) {
     if(M.length == 1) return M[0][0]
     var det = 0
-    var sign = 1
-    for(var i = 0; i < M.length; i++) {
-        det += (sign * M[0][i] * invertible(shrunkMatrix(M, 0, i))) % 2
-        sign *=  -1
-    }
+    for(var i = 0; i < M.length; i++)
+        det += (M[0][i] * invertible(shrunkMatrix(M, 0, i))) % 2
     return det != 0
 }
 
