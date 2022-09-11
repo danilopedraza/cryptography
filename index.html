@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8"> 
+        <meta name="description" content="Cryptography app">
+        <meta name="robots" content="index,follow">
+        <title>Crabbit</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./style.css">
+        <link rel="icon" href="./favicon.ico">
+    </head>
+    <body class="custom-background">
+        <header>
+            <a href="./" class="name"><h3>Crabbit</h3></a>
+            <ul>
+                <li><a href="./about/">About</a></li>
+            </ul>
+        </header>
+
+        <main>
+            <div class="main-content">
+                <div id="main-column">
+                    <div id="presentation">
+                        <div id="main-text">
+                            <h1>Hiding and revealing information has never been so easy.</h1>
+                            <p>Use different algorithms for hiding your data. Try to get keys from ciphertext.</p>
+                        </div>
+                    </div>
+                    <p id="below-presentation">Algorithms and cryptanalysis that we implemented:</p>
+                    <div id="services">
+                        <div class="presentation-box" id="classic-cs">
+                            <div>
+                                <img src="a.png" alt="A" width="50" height="50">
+                            </div>
+                            <p class="title">Monoalphabetic ciphers</p>
+                            <p class="explanation">
+                                Use simple, symmetric algorithms to hide data. Get random keys and use your own keys to decrypt.
+                            </p>
+                            <div class="button"><a href="./classic/">Go</a></div>
+                        </div>
+                        <div class="presentation-box" id="shift-analysis">
+                            <div>
+                                <img src="b.png" alt="A" width="50" height="50">
+                            </div>
+                            <p class="title">
+                            Multialphabetic ciphers</p>
+                            <p class="explanation">
+                                Coming soon.
+                            </p>
+                            <div class="button"><a href="./classic/cryptanalysis/shift/">Go</a></div>
+                        </div>
+                        <div class="presentation-box" id="sub-analysis">
+                            <div>
+                                <img src="c.png" alt="A" width="50" height="50">
+                            </div>
+                            <p class="title">Cryptanalysis</p>
+                            <p class="explanation">
+                                Analyze the multiple algoriths using the best attack for each one of the Monoalphabetic cryptosistems.
+                            </p>
+                            <div class="button"><a href="./classic/cryptanalysis/substitution/">Go</a></div>
+                        </div>
+                </div>
+            </div>
+            
+        </main>
+
+        <footer></footer>
+    </body>
+</html>
