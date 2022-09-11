@@ -32,9 +32,9 @@
                             <div>
                                 <img src="a.png" alt="A" width="50" height="50">
                             </div>
-                            <p class="title">Monoalphabetic ciphers</p>
+                            <p class="title">Classic ciphers</p>
                             <p class="explanation">
-                                Use simple, symmetric algorithms to hide data. Get random keys and use your own keys to decrypt.
+                                Use simple, symmetric algorithms to hide data. Get random keys and use your own keys.
                             </p>
                             <div class="button"><a href="./classic/">Go</a></div>
                         </div>
@@ -43,21 +43,57 @@
                                 <img src="b.png" alt="A" width="50" height="50">
                             </div>
                             <p class="title">
-                            Multialphabetic ciphers</p>
+                                Shift Cipher Cryptanalysis
+                            </p>
                             <p class="explanation">
-                                Coming soon.
+                                Compare any possible plaintext. Make some guesses derived from frequencies.
                             </p>
                             <div class="button"><a href="./classic/cryptanalysis/shift/">Go</a></div>
                         </div>
-                        <div class="presentation-box" id="sub-analysis">
+                        <div class="presentation-box" id="affine-analysis">
                             <div>
                                 <img src="c.png" alt="A" width="50" height="50">
                             </div>
-                            <p class="title">Cryptanalysis</p>
+                            <p class="title">
+                                Affine Cipher Cryptanalysis
+                            </p>
                             <p class="explanation">
-                                Analyze the multiple algoriths using the best attack for each one of the Monoalphabetic cryptosistems.
+                                Get the key by solving a system of equations derived from guessing.
+                            </p>
+                            <div class="button"><a href="./classic/cryptanalysis/affine/">Go</a></div>
+                        </div>
+                        <div class="presentation-box" id="sub-analysis">
+                            <div>
+                                <img src="a.png" alt="A" width="50" height="50">
+                            </div>
+                            <p class="title">Substitution Cipher Cryptanalysis</p>
+                            <p class="explanation">
+                                Iteratively complete the plaintext, doing a real-time comparison. 
+                                See the letter frequencies of the ciphertext for some guidance.
                             </p>
                             <div class="button"><a href="./classic/cryptanalysis/substitution/">Go</a></div>
+                        </div>
+                        <div class="presentation-box" id="vig-analysis">
+                            <div>
+                                <img src="b.png" alt="A" width="50" height="50">
+                            </div>
+                            <p class="title">Vigenère Cipher Cryptanalysis</p>
+                            <p class="explanation">
+                                Try to guess the length of the key and then guess each character from frequencies.
+                            </p>
+                            <div class="button"><a href="./classic/cryptanalysis/vigenere/">Go</a></div>
+                        </div>
+                        <div class="presentation-box" id="hill-analysis">
+                            <div>
+                                <img src="c.png" alt="A" width="50" height="50">
+                            </div>
+                            <p class="title">
+                                Hill Cipher Cryptanalysis
+                            </p>
+                            <p class="explanation">
+                                Get a key from solving a linear system from a pair of plaintext and ciphertext.
+                            </p>
+                            <div class="button"><a href="./classic/cryptanalysis/hill/">Go</a></div>
                         </div>
                 </div>
             </div>

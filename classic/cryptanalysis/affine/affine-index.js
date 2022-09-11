@@ -59,13 +59,13 @@ attackButton.addEventListener('click', (event) => {
 tryGuessButton.addEventListener('click', (event) => {
     var key = keyBox.value
     if (/^(\s*[a-zA-Z]\s*->\s*[a-zA-Z]\s*),(\s*[a-zA-Z]\s*->\s*[a-zA-Z]\s*)$/.test(key)) {
-        var nums = key.replace(/\s/g,'').toUpperCase().split(/->|,/).map(code)
+        var nums = key.replace(/\s/g,'').toUpperCase().split(/->|,/)
         key = getKey([nums[0],nums[1]],[nums[2],nums[3]])
-        guessStr = decodeShift(code(key), cipherStr)
-        reAdjustText()
+        console.log(key)
+        //guessStr = decodeAffine(code(key), cipherStr)
+        //reAdjustText()
     }
     else {
         // TODO: manejar error
     }
 })
-

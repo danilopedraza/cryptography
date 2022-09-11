@@ -42,7 +42,7 @@ textarea {
   border: 1px solid #cad1d7;
   border-radius: .25rem;
   box-shadow: none;
-  transition: all .2s cubic-bezier(.68,-.55,.265,1.55);
+  /*transition: all .2s cubic-bezier(.68,-.55,.265,1.55);*/
 }
 
 * {
@@ -286,7 +286,7 @@ main .main-content #main-column #services {
 .presentation-box {
     display: flex;
     flex-direction: column;
-    height: 300px;
+    height: 350px;
     margin: 10px 10px;
     border-radius: 5px;
     background-color: white;
@@ -396,7 +396,7 @@ main .main-content #main-column #services {
     }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 700px) {
 
     main .main-content #main-column #presentation img {
         display: none;
@@ -407,7 +407,7 @@ main .main-content #main-column #services {
     }
 
     main .main-content #main-column #services {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 }
 
