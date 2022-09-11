@@ -1,0 +1,420 @@
+/* Estilos para toda la página */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.custom-background{
+    background-image: url("P2.png");
+    background-size: cover; /*include this*/
+}
+
+html {
+    font-size: 62.5%;
+    font-family: open sans,sans-serif;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+body {
+    background: white;
+}
+
+/* Estilos para el header */
+textarea {
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  resize: none;
+  opacity: 0.85;
+
+  line-height: 1.5;
+  color: #8898aa;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #cad1d7;
+  border-radius: .25rem;
+  box-shadow: none;
+  transition: all .2s cubic-bezier(.68,-.55,.265,1.55);
+}
+
+* {
+  box-sizing: border-box;
+  letter-spacing: 0.05rem;
+  outline: 0 none;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+
+$height: 36;
+label {
+  position: relative;
+  display: inline-block;
+  &:before {
+    content: '';
+    height: ($height - 5) + px;
+    position: absolute;
+    right: 7px;
+    top: 3px;
+    width: 22px;
+
+    //background: -webkit-linear-gradient(#fff, #f0f0f0);
+    //background: -moz-linear-gradient(#fff, #f0f0f0);
+    //background: linear-gradient(#f5f5f5, #e0e0e0);
+    background: #fff; //for Firefox in Android
+
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    pointer-events: none;
+    display: block;
+  }
+  &:after {
+    content: " ";
+    position: absolute;
+    right: 15px;
+    top: 46%;
+    margin-top: -3px;
+    z-index: 2;
+    pointer-events: none;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 6.9px 4px 0 4px;
+    border-color: #aaa transparent transparent transparent;
+    pointer-events: none;
+  }
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 0 30px 0 10px;
+
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+    line-height: $height + px;
+    height: $height + px;
+    //box-shadow: inset 1px 1px 1px 0px rgba(0, 0, 0, 0.2);
+    background: #fff;
+
+    //min-width: 200px;
+    margin: 0 5px 5px 0;
+  }
+}
+//fix for ie 10 later
+select::-ms-expand {
+  display: none;
+}
+
+// remove dotted firefox border
+@-moz-document url-prefix() {
+  select {
+    color: rgba(0,0,0,0);
+    text-shadow: 0 0 0 #ffffff;
+  }
+}
+
+// Codepen Layout
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400);
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  background: #34495E;
+  select {
+    margin: 50px auto 0;
+    display:block;
+  }
+}
+
+
+
+
+
+header {
+    font-size: 1.6rem;
+    width: 100%;
+    height: 50px;
+    background-color: #282a35;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+
+    color: white;
+}
+
+header a {
+    color: white;
+}
+
+header ul {
+    list-style: none;
+    position: absolute;
+    right: 20px;
+}
+
+header .name {
+    position: absolute;
+    left: 20px;
+}
+
+header ul li {
+    display: inline-block;
+    margin-left: 12px;
+}
+
+/* Estilos para el contenido principal */
+
+main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 1.6rem;
+
+}
+
+main .main-content {
+    display: grid;
+    width: 1000px;
+    height: inherit;
+
+}
+
+main .main-content .home-text {
+    padding-left: 15px;
+    width: inherit;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid grey;
+    font-size: 1.8rem;
+}
+
+main .main-content .row {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+
+    min-height: inherit;
+
+    width: inherit;
+
+}
+
+main .main-content .row .left-col {
+    padding: 15px 15px;
+    min-height: inherit;
+}
+
+main .main-content .row .right-col {
+    height: inherit;
+}
+
+main .main-content .row h3 {
+    padding-left: 10px;
+    width: inherit;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid grey;
+    font-size: 1.6rem;
+}
+
+main .main-content .row .right-col ul {
+    padding: 10px 10px;
+    list-style: none;
+}
+
+main .main-content .row .right-col ul li {
+    margin-bottom: 3px;
+}
+
+
+main .main-content #main-column {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+}
+
+main .main-content #main-column #presentation {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+main .main-content #main-column #presentation #main-text {
+    text-align: center;
+    margin: 50px 50px;
+    font-style: bold;
+}
+
+main .main-content #main-column #presentation #main-text p {
+    margin-top: 20px;
+    font-size: 2rem;
+}
+
+main .main-content #main-column #presentation #main-text h1 {
+    overflow-wrap: break-word;
+}
+
+main .main-content #main-column #presentation img {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 65%;
+}
+
+
+main .main-content #main-column #below-presentation {
+    text-align: center;
+    padding: 50px 0;
+    color: rgb(92, 92, 92);
+}
+
+main .main-content #main-column #services {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.presentation-box {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    margin: 10px 10px;
+    border-radius: 5px;
+    background-color: white;
+    border: 1px solid rgb(199, 199, 199);
+    box-shadow: 0 15px 35px rgba(50,50,93,.1),0 5px 15px rgba(0,0,0,.07)!important;
+}
+
+.presentation-box .title {
+    margin: 20px 20px;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.presentation-box .explanation {
+    margin: 25px 15px;
+    text-align: center;
+    margin-bottom: auto;
+
+}
+
+.button {
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 5px;
+    border-radius: 15px;
+    border: 1px solid rgb(199, 199, 199);
+    background-color: #2dce89;
+    text-align: center;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .625rem 1.25rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+}
+
+.button:hover {
+    background-color: rgb(224, 229, 241);
+}
+
+.button a {
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    text-align: center;
+}
+
+.presentation-box .button {
+    margin-bottom: 15px;
+}
+/* media queries */
+
+.random-key-button {
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 5px;
+    border-radius: 15px;
+    border: 1px solid rgb(199, 199, 199);
+    background-color:#EBF4A8;
+    text-align: center;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .625rem 1.25rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+}
+
+.random-key-button:hover {
+    background-color: rgb(224, 229, 241);
+}
+
+
+.selectonator {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    margin: 10px 10px;
+    border-radius: 5px;
+    background-color:white;
+    padding: 5px;
+    border: 1px solid rgb(199, 199, 199);
+    box-shadow: 0 15px 35px rgba(50,50,93,.1),0 5px 15px rgba(0,0,0,.07)!important;
+}
+
+@media (max-width: 1000px) {
+    main .main-content {
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+@media (max-width: 900px) {
+    main .main-content .row {
+        grid-template-columns: 1fr;
+    }
+    
+    main .main-content #main-column #services {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (max-width: 650px) {
+
+    main .main-content #main-column #presentation img {
+        display: none;
+    }
+
+    main .main-content #main-column #presentation {
+        grid-template-columns: 1fr;
+    }
+
+    main .main-content #main-column #services {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+@media (max-width: 500px) {
+    main .main-content #main-column #services {
+        grid-template-columns: 1fr;
+    }
+}
