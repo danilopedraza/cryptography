@@ -166,3 +166,5 @@ function decodeHill(key, arr) {
 
 export {encodeShift, encodeSubstitution, encodeAffine, encodeVigenere, encodePermutation, encodeHill}
 export {decodeShift, decodeSubstitution, decodeAffine, decodeVigenere, decodePermutation, decodeHill}
+
+export {textToArray}

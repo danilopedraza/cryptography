@@ -32,7 +32,7 @@ function getFrecuences(str){
     en orden descendente*/
 
     let frecuences=Array(26).fill().map((x,i)=>[String.fromCharCode(i+65),0]);
-    let Y=cs.textToVector(str);
+    let Y=cs.textToArray(str);
 
     for (let i = 0; i < str.length; i++) 
         frecuences[Y[i]][1]++;
@@ -91,3 +91,5 @@ function analyzeVigenere(){}
 
 
 function analyzeHill(){}
+
+export {occurProb, getFrecuences, code}
