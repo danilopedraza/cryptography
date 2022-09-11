@@ -1,4 +1,5 @@
 import * as cryptosystems from './cryptosystems.js'
+import * as matrix from './Matrix.js'
 
 
 const cipherSelector = document.querySelector('.cipher-selector')
@@ -120,6 +121,7 @@ randomKeyButton.addEventListener('click', (event) => {
                 () => Array.from({length: keyLength}, () => randint(0,256)).join()
             )
             keyInput.value = res.join('\n')
+
             break
         default:
             // NOOP
@@ -237,6 +239,9 @@ function verifyKey() {
                 
                 if (key.length == 4 || key.length == 9 || key.length == 16) {
                     key = key.map(Number)
+                    if(!matrix.invertible(matrix.arrayToMatrix(key))) {
+                        errors.push('The matrix is not invertible.')
+                    }
                 }
                 else {
                     errors.push('Due to its size, the entered key cannot be interpreted as a matrix.')
@@ -267,7 +272,7 @@ function imageToArray(img) {
     
     var arr = new Uint8ClampedArray(idata.data.length/4)
     for (var i = 0; i < arr.length; i++)
-        arr[i] = Math.floor(0.299*idata.data[4*i]+0.587*idata.data[4*i+1]+0.114*idata.data[4*i+2])
+        arr[i] = Math.floor((idata.data[4*i]+idata.data[4*i+1]+idata.data[4*i+2])/3)
     
     return arr
 }
@@ -302,7 +307,6 @@ function verifyAndSendImage(mode, key) {
                 arr = cryptosystems.encodeHill(key, arr)
             else
                 arr = cryptosystems.decodeHill(key, arr)
-            
             var imgData = new Uint8ClampedArray(arr.length*4)
             for (var i = 0; i < arr.length; i++) {
                 imgData[4*i] = arr[i]
