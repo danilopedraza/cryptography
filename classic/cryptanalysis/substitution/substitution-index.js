@@ -74,27 +74,32 @@ attackButton.addEventListener('click', (event) => {
         trigramFreq[0][0]+'->'+freqs[0][0][0]+','+trigramFreq[0][1]+'->'+freqs[0][0][1]
     )
 
-
     keyGuessesBox.innerHTML = 'Some guesses derived from frequencies:<br>' + guesses.join('<br>')
     
     guessKeyRow.style.display = 'block'
+    keyBox.value = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 })
 
 tryGuessButton.addEventListener('click', (event) => {
+    errorsBox.innerText = ''
     var key = keyBox.value
     if (/^\s*((-|[a-zA-Z])\s*){26}$/.test(key)) {
-        var nums = key.replace(/\s/g,'').toUpperCase().split(/->|,/)
-        key = getKey([nums[0],nums[1]],[nums[2],nums[3]])
-        if (key) {
-            errorsBox.innerText = ''
-            guessStr = decodeAffine(key, cipherStr)
-            reAdjustText()
+        key = key.replace(/\s/g,'').toUpperCase()
+        
+        if (key.replace(/-/g,'').length != (new Set(Array.from(key.replace(/-/g,'')))).size) {
+            errorsBox.innerText = 'Error: The key has repeated elements.'
         }
         else {
-            errorsBox.innerText = 'The guess resulted in a bad system of equations. A key could not be obtained.'
+            var inv = Array.from('--------------------------')
+            for (var i = 0; i < 26; i++) {
+                if (key[i] != '-')
+                    inv[code(key[i])] = String.fromCharCode(65+i)
+            }
+            guessStr = Array.from(cipherStr, (char, _) => inv[code(char)]).join('').toLowerCase()
+            reAdjustText()
         }
     }
     else {
-        errorsBox.innerText = 'The guess is in a bad format. It has to be two of the type X -> Y, separated by commas.'
+        errorsBox.innerText = 'Error: The guess must be a word of length 26, composed of english letters and the hyphen \"-\". The letters cannot be repeated.'
     }
 })
