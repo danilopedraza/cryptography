@@ -70,3 +70,9 @@ main .main-content .row #right-column table {
 main .main-content .row #right-column table th {
     padding: 0px 10px;
 }
+
+@media (max-width: 900px) {
+    main .main-content .row {
+        grid-template-columns: 1fr;
+    }
+}
