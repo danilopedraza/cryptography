@@ -71,7 +71,7 @@ attackButton.addEventListener('click', (event) => {
     rightColumn.innerHTML = table
     
     
-    guesses = [
+    var guesses = [
         occurProb[0][0]+'→'+freqs[0][0]+','+occurProb[1][0]+'→'+freqs[1][0]
     ]
 
