@@ -58,7 +58,7 @@ main .main-content .row .left-col form .input-image {
     padding: 10px 0px;
 }
 
-main .main-content .row .left-col form #errors {
+main .main-content .row .left-col form #errrs {
     font-size: 1.35rem;
     color: red;
     padding: 10px 0px;
