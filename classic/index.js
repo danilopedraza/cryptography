@@ -30,7 +30,7 @@ cipherSelector.addEventListener('change', (event) => {
             keyInputGuide.innerHTML = 'ⓘ A key is an english letter.'
             break
         case 'substitution':
-            keyInputGuide.innerHTML = 'ⓘ A key is a list of all the english without repetitions.'
+            keyInputGuide.innerHTML = 'ⓘ A key is a list of all the english letters without repetitions.'
             break
         case 'affine':
             keyInputGuide.innerHTML = 'ⓘ A key is a pair of numbers, both of them from 0 to 25.<br>ⓘ The first number must be invertible modulo 26.'

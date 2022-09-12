@@ -1,3 +1,13 @@
+main .main-content .row {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+
+    min-height: inherit;
+
+    width: inherit;
+}
+
+
 /* estilos del formulario */
 
 main .main-content .row .left-col form {
@@ -32,12 +42,49 @@ main .main-content .row .left-col .row {
 }
 
 main .main-content .row .left-col .row input {
-    width: 250px;
+    width: 40px;
     height: 30px;
+    text-align: center;
 }
 
 main .main-content .row .left-col .row button {
     padding-left: 3px;
     padding-right: 3px;
     height: 30px;
+}
+
+main .main-content .row .left-col #errors {
+    font-size: 1.3rem;
+    color: red;
+}
+
+main .main-content .row #right-column {
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+main .main-content .row #right-column table {
+    font-style: normal;
+}
+
+main .main-content .row #right-column table th {
+    padding: 0px 10px;
+    text-align: center;
+}
+main .main-content .row #right-column table td {
+    text-align: center;
+}
+main .main-content .row #right-column table tr {
+    border-bottom: 1px solid #f2f2f2;
+}
+main .main-content .row .left-col .guess button{
+    margin: 5px;
+    padding: 5px;
+}
+
+@media (max-width: 900px) {
+    main .main-content .row {
+        grid-template-columns: 1fr;
+    }
 }

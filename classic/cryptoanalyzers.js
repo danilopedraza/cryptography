@@ -15,7 +15,7 @@ const digramFreq = [
     'RE', 'ER', 'AN', 'TI', 'ES'
 ]
 
-const TrigramFreq = [
+const trigramFreq = [
     'THE', 'AND', 'THA', 'ENT', 'ING'
 ]
 
@@ -52,27 +52,41 @@ function getFrecuences(str){
 }
 
 function getDigramFrequences(str) {
-    let frecuences = {}
+    let frequences = {}
     for (let i = 0; i < str.length-1; i++) {
         let substr = str.substring(i,i+2)
-        if (substr in frecuences)
-            frecuences[substr]++
+        if (substr in frequences)
+            frequences[substr]++
         else
             frequences[substr] = 1
     }
+
+    frequences = Object.keys(frequences).map(function(key) {
+        return [key, frequences[key]];
+    })
+    frequences.sort(function(first, second) {
+        return second[1] - first[1];
+      });
 
     return frequences
 }
 
 function getTrigramFrequences(str) {
-    let frecuences = {}
+    let frequences = {}
     for (let i = 0; i < str.length-2; i++) {
         let substr = str.substring(i,i+3)
-        if (substr in frecuences)
-            frecuences[substr]++
+        if (substr in frequences)
+            frequences[substr]++
         else
             frequences[substr] = 1
     }
+
+    frequences = Object.keys(frequences).map(function(key) {
+        return [key, frequences[key]];
+    })
+    frequences.sort(function(first, second) {
+        return second[1] - first[1];
+      });
 
     return frequences
 }
@@ -106,10 +120,12 @@ function getKey(conjecture1, conjecture2){
     let p=code(conjecture2[0]), q=code(conjecture2[1]);
 
     if((n-p)%2==0 || (n-p)%13==0)
-        return 'Not soluble';
+        return null
     
     let x=(abs(m-q)*inv[abs(n-p)])%26;
     let y=abs(m-(n*x)%26);
+    
+    if (!(x in inv)) return null
     return [x,y];
 }
 
@@ -129,7 +145,7 @@ function analyzeHill(){}
 
 export {occurProb, getFrecuences,
         digramFreq, getDigramFrequences,
-        TrigramFreq, getTrigramFrequences,
+        trigramFreq, getTrigramFrequences,
         getKey,
         code
     }
