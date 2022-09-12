@@ -82,6 +82,7 @@ main .main-content .row .left-col .guess button{
     margin: 5px;
     padding: 5px;
 }
+
 @media (max-width: 900px) {
     main .main-content .row {
         grid-template-columns: 1fr;
