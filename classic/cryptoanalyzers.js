@@ -165,8 +165,9 @@ function invertibleMod26(M) {
     var sign = 1
     for(var i = 0; i < M.length; i++)
         det += (M[0][i] * (sign * invertibleMod26(shrunkMatrix(M, 0, i))))
+        det = det % 26
         sign *= -1
-    return det in inv
+    return (det % 26) in inv
 }
 
 function inverseMod26(M) {
@@ -214,6 +215,33 @@ function inverseMod26(M) {
     return N
 }
 
+function arrayToMatrix(arr) {
+    let root = {4:2, 9:3, 16:4}
+    let size = root[arr.length]
+    let M = Array(size)
+    for(var i = 0; i < size; i++) {
+        M[i] = arr.slice(i*size, (i+1)*size)
+    }
+    return M
+}
+
+function productMod26(A, B) {
+    let C = Array(A.length)
+    for(var i = 0; i < A.length; i++) {
+        C[i] = Array(B[0].length)
+        for(var j = 0; j < B[0].length; j++) {
+            C[i][j] = 0
+            for(var h = 0; h < B.length; h++) {
+                C[i][j] = (C[i][j] + A[i][h]*B[h][j]) % 26
+            }
+        }
+    }
+    return C
+}
+
+
+function analyzeHill(plainText, cipherText, lengths) {
+    var res = []
 
     for (let i = 0; i < lengths.length; i++) {
         var length = lengths[i]*lengths[i]
