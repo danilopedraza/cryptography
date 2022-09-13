@@ -81,6 +81,7 @@ attackButton.addEventListener('click', (event) => {
             default:
                 var text = 'We found some keys:'
                 keys.forEach(key => text += '<br>' + key.join())
+                resultsBox.innerHTML = text
                 break
         }
     }
