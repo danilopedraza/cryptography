@@ -8,16 +8,12 @@ const guessKeyRow = document.getElementById('guess-key-row')
 const keyGuessesBox = document.getElementById('guesses')
 const tryGuessButton = document.getElementById('try-guess-button')
 
-//const keyBox = document.getElementById('key')
 const keyN = document.getElementById('key-n')
 const keyM = document.getElementById('key-m')
 const keyP = document.getElementById('key-p')
 const keyQ = document.getElementById('key-q')
 
-//guess u
 
-const guess2 = document.getElementById('guess_2')
-const guess3 = document.getElementById('guess_3')
 
 
 const errorsBox = document.getElementById('errors')
@@ -87,25 +83,13 @@ attackButton.addEventListener('click', (event) => {
         trigramFreq[0][0]+'→'+freqs[0][0][0]+','+trigramFreq[0][1]+'→'+freqs[0][0][1]
     )
 
-    keyGuessesBox.innerHTML = 'Some guesses derived from frequencies:<br><div class="guess"><button>' +
-                                guesses[0]+'</button><button>'+
-                                guesses[1]+'</button><button>'+
-                                guesses[2]+'</button></div>';
+    keyGuessesBox.innerHTML = 'Some guesses derived from frequencies:<br>' + guesses.join('<br>')
     
-    const buttons =document.querySelectorAll('div.guess button');
-
-    buttons.forEach(button => {addEventListener('click',() => {
-            keyN.value = button.textContent.charAt(0)
-            keyM.value = button.textContent.charAt(2)
-            keyP.value = button.textContent.charAt(4)
-            keyQ.value = button.textContent.charAt(6)
-        });
-    });
     guessKeyRow.style.display = 'block'
 })
 
 tryGuessButton.addEventListener('click', (event) => {
-    //var key = keyBox.value
+
     let n=keyN.value.replace(/\s/g,'').toUpperCase();
     let m=keyM.value.replace(/\s/g,'').toUpperCase();
     let p=keyP.value.replace(/\s/g,'').toUpperCase();
