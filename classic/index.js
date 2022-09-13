@@ -104,7 +104,7 @@ randomKeyButton.addEventListener('click', (event) => {
             keyInput.value = [phiOf26[i], randint(0,26)].join()
             break
         case 'vigenere':
-            keyLength = randint(5,20+1)
+            keyLength = randint(2,6+1)
             keyInput.value = Array.from({length: keyLength}, () => String.fromCharCode(65+randint(0,26))).join('')
             break
         case 'permutation':
