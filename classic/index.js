@@ -294,7 +294,6 @@ function verifyAndSendImage(mode, key) {
         img.addEventListener('load', (event) => {
             var arr = imageToArray(event.target)
             
-            
             if (mode == 'cipher')
                 arr = cryptosystems.encodeHill(key, arr)
             else

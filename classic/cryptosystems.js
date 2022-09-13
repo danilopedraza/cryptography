@@ -147,7 +147,7 @@ function encodeHill(key, arr) {
     }
     Y = matrix.product(X, kM)
     if(arr.length % kM.length != 0)
-        Y.push(arr.slice(0,-(arr.length % kM.length)))
+        Y.push(Array.from(arr.slice(-(arr.length % kM.length))))
     return Y.flat()
 }
 
@@ -160,7 +160,7 @@ function decodeHill(key, arr) {
     }
     X = matrix.product(Y, invkM)
     if(arr.length % invkM.length != 0)
-        X.push(arr.slice(0,-(arr.length % invkM.length)))
+        X.push(Array.from(arr.slice(-(arr.length % invkM.length))))
     return X.flat()
 }
 

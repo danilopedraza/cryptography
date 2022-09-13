@@ -26,7 +26,7 @@ function invertible(M) {
     if(M.length == 1) return M[0][0]
     var det = 0
     for(var i = 0; i < M.length; i++)
-        det += (M[0][i] * invertible(shrunkMatrix(M, 0, i))) % 2
+        det = (det + M[0][i] * invertible(shrunkMatrix(M, 0, i))) % 2
     return det != 0
 }
 
@@ -66,6 +66,7 @@ function inverse(M) {
             aux = N[i]
             N[i] = N[j]
             N[j] = aux
+            console.log(M)
         }
         //Multiplica toda la fila por el inverso del pivote
         let inverse = inv[parseInt(M[i][i]/2)]
