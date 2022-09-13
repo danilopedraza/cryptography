@@ -29,8 +29,29 @@ main .main-content .row .left-col form #input-plaintext {
     box-shadow: 0 4px 6px -5px hsl(0, 0%, 40%), inset 0px 4px 6px -5px black;
 }
 
+main .main-content .row .left-col form #key-guesses {
+    height: 30px;
+    width: 150px;
+    display: none;
+    margin: 15px 0px;
+    padding: 10px 3px;
+}
+
 main .main-content .row .left-col form button {
     width: 100%;
     height: 30px;
     margin-top: 20px;
+}
+
+main .main-content .row .left-col #errors {
+    color: red;
+    margin: 10px 0px;
+}
+
+main .main-content .row .left-col form .row {
+    padding-top: 20px;
+}
+
+main .main-content .row .left-col form .row p {
+    margin-left: 5px;
 }

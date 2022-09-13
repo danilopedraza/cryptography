@@ -2,14 +2,15 @@
 <html lang="es">
     <head>
         <meta charset="UTF-8"> 
-        <meta name="description" content="Vigenère Cipher Cryptanalysis">
+        <meta name="description" content="Hill Cipher Cryptanalysis">
         <meta name="robots" content="index,follow">
-        <title>Vigenère Cryptanalysis</title>
+        <title>Hill Cryptanalysis</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../../../style.css">
         <link rel="stylesheet" href="./hill-style.css">
         <link rel="icon" href="../favicon.ico">
         
+        <script src="../../cryptoanalyzers.js" type="module" defer></script>
         <script src="./hill-index.js" type="module" defer></script>
     </head>
     <body>
@@ -34,23 +35,30 @@
                         <form id='form'>
                             <h4>The key</h4>
                             
-                            <input type="radio" name="key-option" id="no-guess">
-                            <label for="no-guess">I don't know of what the length of the key could be</label>
+                            <input type="radio" name="key-option" id="no-guess" checked autocomplete="off">
+                            <label for="no-guess">I don't know what the length of the key could be</label>
                             <p></p>
-                            <input type="radio" name="key-option" id="some-guess">
-                            <label for="some-guess">I have a guess or some guesses of what the length of the key could be</label>
-                            <p></p>
-                            <input type="radio" name="key-option" id="the-key">
+                            <input type="radio" name="key-option" id="the-key" autocomplete="off">
                             <label for="key-option">I know the length of the key</label>
 
-                            <p style="padding-top: 20px;">Enter the ciphertext:</p>
+                            <input type="text" id="key-guesses">
+                            <p id="key-box-guide"></p>
                             <div class="row">
-                                <textarea id="input-plaintext" name="ciphertext" rows="8" autocomplete="off"></textarea>
-                                <textarea id="input-ciphertext" name="ciphertext" rows="8" autocomplete="off"></textarea>
+                                <div>
+                                    <p>Enter the plaintext:</p>
+                                    <textarea id="input-plaintext" name="ciphertext" rows="8" autocomplete="off"></textarea>
+                                </div>
+                                <div>
+                                    <p>Enter the ciphertext:</p>
+                                    <textarea id="input-ciphertext" name="ciphertext" rows="8" autocomplete="off"></textarea>
+                                </div>
+                                
                             </div>
                             
                             <button type="button" id="attack-button">Attack</button>
                         </form>
+                        <p id="errors"></p>
+                        <p id="results"></p>
                     </div>
             </div>
             

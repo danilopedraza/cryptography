@@ -139,13 +139,133 @@ function addConjecture(permutation, conjecture){
 
 function analyzeVigenere(){}
 
+// copiado de matrix.js (vale la pena solicitar todo el archivo?)
+function shrunkMatrix(M, a, b) {
+    let N = Array(M.length-1)
+    for(var i = 0; i < M.length-1; i++) {
+        N[i] = Array(M.length-1)
+        for(var j = 0; j < M.length-1; j++) {
+            if(i < a && j < b) N[i][j] = M[i][j]
+            if(i >= a && j < b) N[i][j] = M[i+1][j]
+            if(i < a && j >= b) N[i][j] = M[i][j+1]
+            if(i >= a && j >= b) N[i][j] = M[i+1][j+1]
+        }
+    }
+    return N
+}
+
+function invertibleMod26(M) {
+    let inv = {
+        1:1, 3:9, 5:21, 7:15, 9:3, 11:19, 15:7,
+        17:23, 19:11, 21:5, 23:17, 25:25
+    }
+
+    if(M.length == 1) return M[0][0]
+    var det = 0
+    for(var i = 0; i < M.length; i++)
+        det += (M[0][i] * invertibleMod26(shrunkMatrix(M, 0, i)))
+    return det in inv
+}
+
+function inverseMod26(M) {
+    let inv = {
+        1:1, 3:9, 5:21, 7:15, 9:3, 11:19, 15:7,
+        17:23, 19:11, 21:5, 23:17, 25:25
+    }
+    let N = Array(M.length)
+    //Crea matriz identidad
+    for(var i = 0; i < M.length; i++) {
+        N[i] = Array(M.length)
+        for(var j = 0; j < M.length; j++) {
+            if(i == j) N[i][j] = 1
+            else N[i][j] = 0
+        }
+    }
+    for(var i = 0; i < M.length; i++) {
+        //Verifica que el pivote sea invertible
+        if(!(M[i][i] in inv)) {
+            for(var j = i + 1; M[j][i] % 2 == 0; j++);
+            var aux = M[i]
+            M[i] = M[j]
+            M[j] = aux
+            aux = N[i]
+            N[i] = N[j]
+            N[j] = aux
+        }
+        //Multiplica toda la fila por el inverso del pivote
+        let inverse = inv[parseInt(M[i][i])]
+        for(var j = 0; j < M.length; j++) {
+            M[i][j] = (M[i][j] * inverse) % 26
+            N[i][j] = (N[i][j] * inverse) % 26
+        }
+        //Llena de ceros debajo y encima del pivote
+        for(var j = 0; j < M.length; j++) {
+            if(i != j) {
+                let m = 26 - M[j][i]
+                for(var h = 0; h < M.length; h++) {
+                    M[j][h] = ((M[i][h] * m) + M[j][h]) % 26
+                    N[j][h] = ((N[i][h] * m) + N[j][h]) % 26
+                }
+            }
+        }
+    }
+    return N
+}
 
 
-function analyzeHill(){}
+function arrayToMatrix(arr) {
+    let root = {4:2, 9:3, 16:4}
+    let size = root[arr.length]
+    let M = Array(size)
+    for(var i = 0; i < size; i++) {
+        M[i] = arr.slice(i*size, (i+1)*size)
+    }
+    return M
+}
+
+function productMod26(A, B) {
+    let C = Array(A.length)
+    for(var i = 0; i < A.length; i++) {
+        C[i] = Array(B[0].length)
+        for(var j = 0; j < B[0].length; j++) {
+            C[i][j] = 0
+            for(var h = 0; h < B.length; h++) {
+                C[i][j] = (C[i][j] + A[i][h]*B[h][j]) % 26
+            }
+        }
+    }
+    return C
+}
+
+function analyzeHill(plainText, cipherText, lengths) {
+    // se asume que los dos strings son de la misma longitud
+    var res = []
+
+    for (let i = 0; i < lengths.length; i++) {
+        var length = lengths[i]*lengths[i]
+        console.log(length)
+
+        for (let j = 0; length*(j+1) < plainText.length; j++) {
+            var x = arrayToMatrix(Array.from( plainText.slice(length*j, length*(j+1)), (str,_) => code(str)))
+            var y = arrayToMatrix(Array.from(cipherText.slice(length*j, length*(j+1)), (str,_) => code(str)))
+            console.log(x,y)
+
+            if (invertibleMod26(x)) {
+                console.log('invertible')
+                res.push(productMod26(inverseMod26(x),y))
+                break
+            }
+            else continue
+        }
+    }
+
+    return res
+}
 
 export {occurProb, getFrecuences,
         digramFreq, getDigramFrequences,
         trigramFreq, getTrigramFrequences,
         getKey,
-        code
-    }
+        code,
+        analyzeHill
+}
